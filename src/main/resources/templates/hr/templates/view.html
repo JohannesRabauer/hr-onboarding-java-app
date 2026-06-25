@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Template - HR Onboarding</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System</h1>
+            <ul>
+                <li><a href="/hr/templates">Templates</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 th:text="${template.name}"></h2>
+        <p th:text="${template.description}"></p>
+
+        <h3>Tasks</h3>
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Duration (days)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.taskOrder}"></td>
+                    <td th:text="${task.title}"></td>
+                    <td th:text="${task.description}"></td>
+                    <td th:text="${task.durationDays}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Add New Task</h3>
+        <form method="post" th:action="@{/hr/templates/{id}/tasks(id=${template.id})}" class="task-form">
+            <div class="form-group">
+                <label for="title">Task Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="durationDays">Duration (days):</label>
+                <input type="number" id="durationDays" name="durationDays" value="1" required>
+            </div>
+            <div class="form-group">
+                <label for="taskOrder">Task Order:</label>
+                <input type="number" id="taskOrder" name="taskOrder" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+        </form>
+
+        <a href="/hr/templates" class="btn btn-secondary">Back to Templates</a>
+    </main>
+</body>
+</html>

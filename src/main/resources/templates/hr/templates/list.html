@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates - HR Onboarding</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System</h1>
+            <ul>
+                <li><a href="/hr/templates">Templates</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>Onboarding Templates</h2>
+        <a href="/hr/templates/new" class="btn btn-primary">Create New Template</a>
+
+        <table class="templates-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="template : ${templates}">
+                    <td th:text="${template.name}"></td>
+                    <td th:text="${template.description}"></td>
+                    <td th:text="${template.createdAt}"></td>
+                    <td>
+                        <a th:href="@{/hr/templates/{id}(id=${template.id})}" class="btn btn-small">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

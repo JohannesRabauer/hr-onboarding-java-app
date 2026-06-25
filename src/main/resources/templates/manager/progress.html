@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Progress - Manager Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System - Manager</h1>
+            <ul>
+                <li><a href="/manager/team">Team</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>Employee Onboarding Progress</h2>
+        <table class="progress-table">
+            <thead>
+                <tr>
+                    <th>Template</th>
+                    <th>Start Date</th>
+                    <th>Expected End Date</th>
+                    <th>Actual End Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="progress : ${progressList}">
+                    <td th:text="${progress.template.name}"></td>
+                    <td th:text="${progress.startDate}"></td>
+                    <td th:text="${progress.expectedEndDate}"></td>
+                    <td th:text="${progress.actualEndDate}"></td>
+                    <td>
+                        <a th:href="@{/manager/progress/{id}(id=${progress.id})}" class="btn btn-small">View Details</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/manager/team" class="btn btn-secondary">Back to Team</a>
+    </main>
+</body>
+</html>

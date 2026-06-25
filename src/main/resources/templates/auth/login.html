@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - HR Onboarding</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System</h1>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form method="post" th:action="@{/auth/login}">
+                <div class="form-group">
+                    <label for="username">Email:</label>
+                    <input type="email" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p>Don't have an account? <a href="/auth/register">Register here</a></p>
+        </div>
+    </main>
+</body>
+</html>
