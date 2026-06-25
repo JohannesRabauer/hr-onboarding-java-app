@@ -358,4 +358,27 @@ footer {
     .hero h2 {
         font-size: 1.8rem;
     }
+
+    .language-switcher {
+        margin-top: 0.5rem;
+    }
+}
+
+.language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.language-switcher .lang-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.25s ease;
+}
+
+.language-switcher .lang-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

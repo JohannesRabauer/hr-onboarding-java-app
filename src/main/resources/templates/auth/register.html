@@ -3,39 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - HR Onboarding</title>
+    <title th:text="#{auth.register.title} + ' - ' + #{app.name}">Register - HR Onboarding</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1>HR Onboarding System</h1>
+            <h1 th:text="#{app.name}">HR Onboarding System</h1>
+            <div class="language-switcher">
+                <a href="?lang=en" class="lang-link">English</a>
+                <span> | </span>
+                <a href="?lang=de" class="lang-link">Deutsch</a>
+            </div>
         </div>
     </nav>
 
     <main class="container">
         <div class="register-form">
-            <h2>Register</h2>
+            <h2 th:text="#{auth.register.title}">Register</h2>
             <form method="post" th:action="@{/auth/register}">
                 <div class="form-group">
-                    <label for="firstName">First Name:</label>
+                    <label for="firstName" th:text="#{auth.register.full_name}">Full Name:</label>
                     <input type="text" id="firstName" name="firstName" required>
                 </div>
                 <div class="form-group">
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
+                    <label for="email" th:text="#{auth.register.email}">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password" th:text="#{auth.register.password}">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <div class="form-group">
+                    <label for="confirmPassword" th:text="#{auth.register.confirm_password}">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="#{auth.register.button}">Register</button>
             </form>
-            <p>Already have an account? <a href="/auth/login">Login here</a></p>
+            <p><span th:text="#{auth.register.have_account}">Already have an account?</span> <a href="/auth/login" th:text="#{auth.register.login_here}">Login here</a></p>
         </div>
     </main>
 </body>
