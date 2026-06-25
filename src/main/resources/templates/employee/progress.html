@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding Progress - Employee</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System - Employee</h1>
+            <ul>
+                <li><a href="/employee/dashboard">Dashboard</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 th:text="${progress.template.name} + ' - Your Progress'"></h2>
+        <div class="progress-info">
+            <p><strong>Start Date:</strong> <span th:text="${progress.startDate}"></span></p>
+            <p><strong>Expected End Date:</strong> <span th:text="${progress.expectedEndDate}"></span></p>
+            <p><strong>Days Remaining:</strong> <span th:text="'In Progress'"></span></p>
+        </div>
+
+        <h3>Your Tasks</h3>
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Duration (days)</th>
+                    <th>Completed At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.templateTask.title}"></td>
+                    <td>
+                        <span th:class="'status-' + ${task.status}">
+                            <span th:text="${task.status}"></span>
+                        </span>
+                    </td>
+                    <td th:text="${task.templateTask.durationDays}"></td>
+                    <td th:text="${task.completedAt}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/employee/dashboard" class="btn btn-secondary">Back to Dashboard</a>
+    </main>
+</body>
+</html>

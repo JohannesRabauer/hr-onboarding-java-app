@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HR Onboarding</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System</h1>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>Dashboard</h2>
+        <p>Welcome to your dashboard!</p>
+        
+        <div class="dashboard-links">
+            <div class="card">
+                <h3>HR Team</h3>
+                <a href="/hr/templates" class="btn">Manage Templates</a>
+            </div>
+            <div class="card">
+                <h3>Manager</h3>
+                <a href="/manager/team" class="btn">View Team</a>
+            </div>
+            <div class="card">
+                <h3>Employee</h3>
+                <a href="/employee/dashboard" class="btn">My Onboarding</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

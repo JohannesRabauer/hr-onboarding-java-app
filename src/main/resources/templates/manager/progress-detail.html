@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Detail - Manager Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System - Manager</h1>
+            <ul>
+                <li><a href="/manager/team">Team</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2 th:text="${progress.template.name} + ' - Progress'"></h2>
+        <div class="progress-info">
+            <p><strong>Start Date:</strong> <span th:text="${progress.startDate}"></span></p>
+            <p><strong>Expected End Date:</strong> <span th:text="${progress.expectedEndDate}"></span></p>
+            <p><strong>Actual End Date:</strong> <span th:text="${progress.actualEndDate}"></span></p>
+        </div>
+
+        <h3>Tasks</h3>
+        <table class="tasks-table">
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Status</th>
+                    <th>Completed At</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.templateTask.title}"></td>
+                    <td th:text="${task.status}"></td>
+                    <td th:text="${task.completedAt}"></td>
+                    <td th:text="${task.notes}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/manager/team" class="btn btn-secondary">Back to Team</a>
+    </main>
+</body>
+</html>

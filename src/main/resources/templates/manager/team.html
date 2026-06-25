@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Manager Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System - Manager</h1>
+            <ul>
+                <li><a href="/manager/team">Team</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>My Team</h2>
+        <table class="team-table">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Hire Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${team}">
+                    <td th:text="${employee.user.firstName} + ' ' + ${employee.user.lastName}"></td>
+                    <td th:text="${employee.user.email}"></td>
+                    <td th:text="${employee.department}"></td>
+                    <td th:text="${employee.hireDate}"></td>
+                    <td>
+                        <a th:href="@{/manager/employee/{id}/progress(id=${employee.id})}" class="btn btn-small">View Progress</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

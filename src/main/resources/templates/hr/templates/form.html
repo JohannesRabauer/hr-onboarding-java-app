@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Template - HR Onboarding</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>HR Onboarding System</h1>
+            <ul>
+                <li><a href="/hr/templates">Templates</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h2>Create New Template</h2>
+        <form method="post" th:action="@{/hr/templates}" class="template-form">
+            <div class="form-group">
+                <label for="name">Template Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Template</button>
+            <a href="/hr/templates" class="btn btn-secondary">Cancel</a>
+        </form>
+    </main>
+</body>
+</html>
