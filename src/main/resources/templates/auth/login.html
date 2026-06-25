@@ -3,52 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - HR Onboarding</title>
+    <title th:text="#{auth.login.title} + ' - ' + #{app.name}">Login - HR Onboarding</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <h1>HR Onboarding System</h1>
+            <h1 th:text="#{app.name}">HR Onboarding System</h1>
+            <div class="language-switcher">
+                <a href="?lang=en" class="lang-link">English</a>
+                <span> | </span>
+                <a href="?lang=de" class="lang-link">Deutsch</a>
+            </div>
         </div>
     </nav>
 
     <main class="container">
         <div class="login-form">
-            <h2>Login</h2>
+            <h2 th:text="#{auth.login.title}">Login</h2>
             <form method="post" th:action="@{/auth/login}">
                 <div class="form-group">
-                    <label for="username">Email:</label>
+                    <label for="username" th:text="#{auth.login.email}">Email:</label>
                     <input type="email" id="username" name="username" placeholder="manager@example.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password" th:text="#{auth.login.password}">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary" th:text="#{auth.login.button}">Login</button>
             </form>
-            <p class="helper-text">Demo logins: hr@example.com / password, manager@example.com / password, employee@example.com / password</p>
+            <p class="helper-text" th:text="#{auth.demo_logins}">Demo logins: hr@example.com / password, manager@example.com / password, employee@example.com / password</p>
             <div class="quick-login">
-                <h3>One-click demo login</h3>
+                <h3 th:text="#{auth.login_as}">One-click demo login</h3>
                 <div class="quick-login-grid">
                     <form method="post" th:action="@{/auth/login}" class="quick-login-form">
                         <input type="hidden" name="username" value="hr@example.com">
                         <input type="hidden" name="password" value="password">
-                        <button type="submit" class="btn btn-secondary">Login as HR</button>
+                        <button type="submit" class="btn btn-secondary" th:text="#{auth.login_as} + ' ' + #{auth.hr}">Login as HR</button>
                     </form>
                     <form method="post" th:action="@{/auth/login}" class="quick-login-form">
                         <input type="hidden" name="username" value="manager@example.com">
                         <input type="hidden" name="password" value="password">
-                        <button type="submit" class="btn btn-secondary">Login as Manager</button>
+                        <button type="submit" class="btn btn-secondary" th:text="#{auth.login_as} + ' ' + #{auth.manager}">Login as Manager</button>
                     </form>
                     <form method="post" th:action="@{/auth/login}" class="quick-login-form">
                         <input type="hidden" name="username" value="employee@example.com">
                         <input type="hidden" name="password" value="password">
-                        <button type="submit" class="btn btn-secondary">Login as Employee</button>
+                        <button type="submit" class="btn btn-secondary" th:text="#{auth.login_as} + ' ' + #{auth.employee}">Login as Employee</button>
                     </form>
                 </div>
             </div>
-            <p>Don't have an account? <a href="/auth/register">Register here</a></p>
+            <p><span th:text="#{auth.login.no_account}">Don't have an account?</span> <a href="/auth/register" th:text="#{auth.login.register_here}">Register here</a></p>
         </div>
     </main>
 </body>
