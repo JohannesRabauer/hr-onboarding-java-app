@@ -19,7 +19,7 @@
             <form method="post" th:action="@{/auth/login}">
                 <div class="form-group">
                     <label for="username">Email:</label>
-                    <input type="email" id="username" name="username" required>
+                    <input type="email" id="username" name="username" placeholder="manager@example.com" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
@@ -27,6 +27,27 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
+            <p class="helper-text">Demo logins: hr@example.com / password, manager@example.com / password, employee@example.com / password</p>
+            <div class="quick-login">
+                <h3>One-click demo login</h3>
+                <div class="quick-login-grid">
+                    <form method="post" th:action="@{/auth/login}" class="quick-login-form">
+                        <input type="hidden" name="username" value="hr@example.com">
+                        <input type="hidden" name="password" value="password">
+                        <button type="submit" class="btn btn-secondary">Login as HR</button>
+                    </form>
+                    <form method="post" th:action="@{/auth/login}" class="quick-login-form">
+                        <input type="hidden" name="username" value="manager@example.com">
+                        <input type="hidden" name="password" value="password">
+                        <button type="submit" class="btn btn-secondary">Login as Manager</button>
+                    </form>
+                    <form method="post" th:action="@{/auth/login}" class="quick-login-form">
+                        <input type="hidden" name="username" value="employee@example.com">
+                        <input type="hidden" name="password" value="password">
+                        <button type="submit" class="btn btn-secondary">Login as Employee</button>
+                    </form>
+                </div>
+            </div>
             <p>Don't have an account? <a href="/auth/register">Register here</a></p>
         </div>
     </main>

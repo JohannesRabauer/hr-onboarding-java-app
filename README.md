@@ -96,6 +96,16 @@ The application will start on `http://localhost:8080`
 - H2 Console: `http://localhost:8080/h2-console`
 - Credentials: username `sa`, password (empty)
 
+### Demo Accounts
+
+The application seeds three starter users on startup:
+
+| Role | Email | Password |
+|------|-------|----------|
+| HR Team | `hr@example.com` | `password` |
+| Manager | `manager@example.com` | `password` |
+| Employee | `employee@example.com` | `password` |
+
 ## Project Structure
 
 ```
